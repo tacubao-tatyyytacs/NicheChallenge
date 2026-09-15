@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ahnimegaverse</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <header class="navbar">
+
+        <div class="logo">
+            <span class="logo-anime">AHNIME</span><span class="logo-verse">GAVERSE</span>
+        </div>
+
+        <nav class="nav-links">
+            <a href="#" class="active">Home</a>
+            <a href="#">Anime</a>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <p class="hero-small-title">
+                    WELCOME TO AHNIMEGAVERSE
+                </p>
+
+                <h1>
+                    Discover Your
+                    <span>Next Anime</span>
+                </h1>
+
+                <p class="hero-description">
+                    Explore thousands of anime, discover new favorites,
+                    and find your next adventure.
+                </p>
+
+                <div class="search-container">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search anime..."
+                    >
+
+                    <button id="searchButton">
+                        🔍 Search
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="anime-section">
+
+            <div class="section-header">
+
+                <div>
+                    <p class="section-label">
+                        TRENDING NOW
+                    </p>
+
+                    <h2>
+                        🔥 Popular Anime
+                    </h2>
+                </div>
+
+                <a href="#" class="view-all">
+                    View All →
+                </a>
+
+            </div>
+
+
+            <!--
+                Diri ang katong mga card churva if naa nay API
+            -->
+
+            <div
+                class="anime-grid"
+                id="popularAnime"
+            >
+
+            </div>
+
+        </section>
+
+        <section class="anime-section">
+
+            <div class="section-header">
+
+                <div>
+                    <p class="section-label">
+                        LATEST RELEASES
+                    </p>
+
+                    <h2>
+                        ✨ Recently Updated
+                    </h2>
+                </div>
+
+                <a href="#" class="view-all">
+                    View All →
+                </a>
+
+            </div>
+
+
+            <div
+                class="anime-grid"
+                id="recentAnime"
+            >
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+
+        <div class="logo">
+            <span class="logo-anime">AHNIME</span><span class="logo-verse">GAVERSE</span>
+        </div>
+
+        <p>
+        </p>
+
+        <p class="copyright">
+        </p>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
