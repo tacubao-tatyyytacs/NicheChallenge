@@ -29,11 +29,6 @@ body {
     --border: rgba(255, 255, 255, 0.08);
 }
 
-
-/* =========================================
-   NAVBAR
-========================================= */
-
 .navbar {
     height: 75px;
 
@@ -55,9 +50,6 @@ body {
     backdrop-filter: blur(12px);
 }
 
-
-/* Logo */
-
 .logo {
     font-family: "Rajdhani", sans-serif;
 
@@ -75,9 +67,6 @@ body {
 .logo-verse {
     color: var(--purple);
 }
-
-
-/* Navigation */
 
 .nav-links {
     display: flex;
@@ -104,11 +93,6 @@ body {
 .nav-links a.active {
     color: var(--purple);
 }
-
-
-/* =========================================
-   HERO SECTION
-========================================= */
 
 .hero {
     min-height: 500px;
@@ -140,9 +124,6 @@ body {
 .hero-content {
     max-width: 700px;
 }
-
-
-/* Small heading */
 
 .hero-small-title {
     color: var(--cyan);
@@ -189,8 +170,6 @@ body {
 }
 
 
-/* Description */
-
 .hero-description {
     max-width: 560px;
 
@@ -200,11 +179,6 @@ body {
 
     margin-bottom: 30px;
 }
-
-
-/* =========================================
-   SEARCH BAR
-========================================= */
 
 .search-container {
     width: 100%;
@@ -270,17 +244,9 @@ body {
     transform: translateY(-1px);
 }
 
-
-/* =========================================
-   ANIME SECTIONS
-========================================= */
-
 .anime-section {
     padding: 60px 7%;
 }
-
-
-/* Section header */
 
 .section-header {
     display: flex;
@@ -312,9 +278,6 @@ body {
     line-height: 1;
 }
 
-
-/* View All */
-
 .view-all {
     color: var(--muted);
 
@@ -328,23 +291,6 @@ body {
 .view-all:hover {
     color: var(--cyan);
 }
-
-
-/* =========================================
-   ANIME GRID
-========================================= */
-
-/*
-    These grids are currently empty.
-
-    JavaScript will place the anime cards
-    inside:
-
-    #popularAnime
-
-    #recentAnime
-*/
-
 .anime-grid {
     display: grid;
 
@@ -352,19 +298,6 @@ body {
 
     gap: 22px;
 }
-
-
-/* =========================================
-   ANIME CARD
-========================================= */
-
-/*
-    These cards are NOT in the HTML right now.
-
-    Your JavaScript will create them later
-    when the API sends anime data.
-*/
-
 .anime-card {
     background-color: var(--card);
 
@@ -388,21 +321,6 @@ body {
         0 15px 35px rgba(0, 0, 0, 0.3),
         0 0 25px rgba(139, 92, 246, 0.08);
 }
-
-
-/* =========================================
-   ANIME IMAGE
-========================================= */
-
-/*
-    The image will eventually come from
-    your API.
-
-    Example:
-
-    <img src="API_IMAGE_URL" alt="Anime">
-*/
-
 .anime-image {
     height: 330px;
 
@@ -429,9 +347,6 @@ body {
     transform: scale(1.05);
 }
 
-
-/* Anime type badge */
-
 .anime-type {
     position: absolute;
 
@@ -454,11 +369,6 @@ body {
     letter-spacing: 1px;
 }
 
-
-/* =========================================
-   ANIME INFORMATION
-========================================= */
-
 .anime-info {
     padding: 15px;
 }
@@ -478,10 +388,6 @@ body {
 
     margin-bottom: 6px;
 }
-
-
-/* Rating / year */
-
 .anime-meta {
     display: flex;
 
@@ -499,16 +405,6 @@ body {
 
     font-weight: 600;
 }
-
-
-/* =========================================
-   EMPTY STATE
-========================================= */
-
-/*
-    This appears while there are no anime
-    loaded from the API yet.
-*/
 
 .anime-grid:empty::before {
     content: "Anime will appear here...";
@@ -531,11 +427,6 @@ body {
 
     font-size: 14px;
 }
-
-
-/* =========================================
-   FOOTER
-========================================= */
 
 .footer {
     margin-top: 50px;
@@ -565,16 +456,6 @@ body {
     font-size: 11px;
 }
 
-
-/* =========================================
-   RESPONSIVE DESIGN
-========================================= */
-
-
-/* -------------------------
-   TABLETS
-------------------------- */
-
 @media (max-width: 900px) {
 
     .anime-grid {
@@ -589,11 +470,6 @@ body {
         gap: 20px;
     }
 }
-
-
-/* -------------------------
-   SMALL TABLETS
-------------------------- */
 
 @media (max-width: 700px) {
 
@@ -622,19 +498,11 @@ body {
     }
 }
 
-
-/* -------------------------
-   PHONES
-------------------------- */
-
 @media (max-width: 480px) {
 
     .hero h1 {
         font-size: 50px;
     }
-
-
-    /* Search becomes vertical */
 
     .search-container {
         flex-direction: column;
@@ -663,8 +531,6 @@ body {
     }
 
 
-    /* Section heading */
-
     .section-header {
         align-items: start;
 
@@ -673,8 +539,6 @@ body {
         gap: 10px;
     }
 
-
-    /* Anime cards */
 
     .anime-grid {
         grid-template-columns: 1fr 1fr;

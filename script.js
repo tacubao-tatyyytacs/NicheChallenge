@@ -7,28 +7,34 @@ const searchButton = document.getElementById("searchButton");
 
 let animeData = [];
 
-fetch (API_URL)
+fetch(API_URL)
     .then(response => response.json())
     .then(data => {
 
-        console.log(data);
+        console.log("POPULAR ANIME:", data);
+
         const animeList = data.data;
+
+        animeData = animeList;
 
         displayAnime(animeList);
     })
     .catch(error => {
-        console.error("Something went wrong:". error);
+        console.error("Something went wrong:", error);
     });
 
-    function displayAnime(animeList) {
+function displayAnime(animeList) {
 
-        animeList.forEach(anime => {
+    animeList.forEach(anime => {
 
-            const animeCard = document.createElement("article");
-            animeCard.classList.add("anime-card");
-            animeCard.innerHTML = `
+        const animeCard = document.createElement("article");
+
+        animeCard.classList.add("anime-card");
+
+        animeCard.innerHTML = `
 
             <div class="anime-image">
+
                 <img 
                     src="${anime.images.jpg.image_url}" 
                     alt="${anime.title}"
@@ -37,7 +43,9 @@ fetch (API_URL)
                 <span class="anime-type">
                     ${anime.type || "N/A"}
                 </span>
+
             </div>
+
             <div class="anime-info">
 
                 <h3>${anime.title}</h3>
@@ -56,37 +64,47 @@ fetch (API_URL)
 
             </div>
         `;
+
         popularAnime.appendChild(animeCard);
     });
 }
-
 function searchAnime() {
 
-    const searchText = searchInput.value;
-
-    const searchURL = `https://api.jikan.moe/v4/anime?q=${searchText}`;
-
-    fetch(searchURL)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.error("Search error:", error);
-        });
-}
-
-searchButton.addEventListener("click", searchAnime);
-
-function searchAnime() {
-
-    const searchText = searchInput.value.trim();
+    const searchText = searchInput.value.trim().toLowerCase();
 
     if (searchText === "") {
         return;
     }
 
-    const searchURL = `https://api.jikan.moe/v4/anime?q=${encodeURIComponent(searchText)}`;
+    const localResults = animeData.filter(anime => {
+
+        const title = anime.title
+            ? anime.title.toLowerCase()
+            : "";
+
+        const englishTitle = anime.title_english
+            ? anime.title_english.toLowerCase()
+            : "";
+
+        return title.includes(searchText) ||
+               englishTitle.includes(searchText);
+    });
+
+    if (localResults.length > 0) {
+
+        console.log("FOUND IN EXISTING ANIME:", localResults);
+
+        popularAnime.innerHTML = "";
+
+        displayAnime(localResults);
+
+        return;
+    }
+    const searchURL =
+        `https://api.jikan.moe/v4/anime?q=${encodeURIComponent(searchText)}`;
+
+    console.log("Searching Jikan:", searchURL);
+
 
     fetch(searchURL)
         .then(response => response.json())
@@ -94,20 +112,37 @@ function searchAnime() {
 
             console.log("SEARCH RESULTS:", data);
 
-            if (!data.data) {
-                console.error("The API did not return anime results.");
-                return;
+            if (data.data && data.data.length > 0) {
+
+                console.log("ANIME FOUND FROM API:", data.data);
+
+                popularAnime.innerHTML = "";
+
+                displayAnime(data.data);
+
+            } 
+            else {
+
+                popularAnime.innerHTML = `
+                    <p class="no-results">
+                        No anime found.
+                    </p>
+                `;
+
+                console.log("No anime found.");
             }
 
-            const animeList = data.data;
-
-            console.log("ANIME LIST:", animeList);
-
-            popularAnime.innerHTML = "";
-
-            displayAnime(animeList);
         })
         .catch(error => {
+
             console.error("Search error:", error);
+
+            popularAnime.innerHTML = `
+                <p class="no-results">
+                    Unable to search right now. Please try again.
+                </p>
+            `;
+
         });
 }
+searchButton.addEventListener("click", searchAnime);
